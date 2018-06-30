@@ -60,7 +60,9 @@ export class RegisterComponent implements OnInit {
 
     this._userService.register(JSON.stringify(this.registrationFormGroup.value))
     .subscribe(
-      data=>{console.log(data), this._router.navigate(['/login'])},
+      data=>{//console.log(data);
+         this._router.navigate(['/login']);
+    },
       error=>console.error(error)
     )
     //console.log(JSON.stringify(this.registerForm.value));

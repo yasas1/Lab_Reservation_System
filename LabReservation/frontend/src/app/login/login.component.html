@@ -1,0 +1,40 @@
+<body>
+<div class="page-header">
+    <h1>User Login</h1>
+</div>
+
+<form  class="modal-content animate" [formGroup]="loginForm"  >
+<div class="imgcontainer">
+    <span (click)="moveToRegister()" class="close" title="Close Modal">&times;</span>
+    
+  <img src="/assets/images/avatar1.jpg" width="200" height="250" alt="Avatar" class="avatar">
+</div>
+
+<div class="containerL">
+
+    <div class="row show-hide-message">
+      <div *ngIf="msgstate" class="alert alert-danger">
+          {{errorMsg}}
+      </div>
+        
+    </div> 
+
+  <label for="uname"><b>Username</b></label>
+  <input formControlName="username" type="text" placeholder="Enter Username" name="username" >
+  <p class="error" *ngIf="!loginForm.controls['username'].valid && loginForm.controls['username'].touched " > Username is required</p>
+      
+  <label for="psw"><b>Password</b></label>
+  <input formControlName="password" type="password" placeholder="Enter Password" name="password">
+  <p class="error" *ngIf="!loginForm.controls['password'].valid && loginForm.controls['password'].touched " > Password is required</p>
+  
+  <div style="text-align: center"> 
+  <button id="button"  type="submit" (click)="login()"  [disabled]="!loginForm.valid"> Login </button> 
+
+  <button id="button2"  type="submit" (click)="moveToRegister()" > Register </button>
+  </div>
+</div>
+
+</form>
+
+  <br> 
+</body>

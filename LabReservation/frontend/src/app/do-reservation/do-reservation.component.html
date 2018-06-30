@@ -1,0 +1,52 @@
+<app-sidebar></app-sidebar>
+<br>
+<body>
+    
+    <div class="hd">
+        <h1>Do New Reservation</h1>
+    </div>
+
+    <div class="simple-form" class="col-sm-12">
+
+    <form [formGroup]="doresForm" id="registration" >
+
+        <label class="lb"> username:</label>
+        <input formControlName="username" class="btnii" type="text" name="username" [(ngModel)]="username" disabled>
+        <br><br>
+
+        <div>
+            <label class="lb">Select Lab :</label>
+            <select formControlName="lab" formc class="btnii" name="lab" >
+                <option value="A">Lab A</option>
+                <option value="B">Lab B</option>
+                <option value="C">Lab C</option>
+                <option value="D">Lab D</option>
+                <option value="E">Lab E</option>
+            </select>
+        </div>
+    <br><br>
+      
+        <label class="lb"> Date:</label>
+        <input formControlName="date" type="date" name="bate"><br><br> <br>
+      <div>
+        <label class="lb">Time :</label>
+        <input formControlName="stime"  type="time" name="stime"> <label class="lb" > To </label>
+        <input formControlName="etime" type="time" name="etime">
+      </div>
+       <br> <br>
+      
+        <button class="button2" type="submit" (click)="doreservation()" [disabled]="!doresForm.valid">Submit</button>
+
+        <div class="row show-hide-message">
+            <div *ngIf="msgstate" class="alert alert-danger">
+                {{msg}}
+            </div>
+              
+        </div>
+
+        <br>
+    </form>
+
+  </div>
+
+</body>

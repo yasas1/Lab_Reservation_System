@@ -1,0 +1,61 @@
+body{
+    background-image: url(/assets/images/pc4.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 700px
+}
+.simple-form{
+    text-align:center;
+    margin: 200px 250px;
+    
+}
+#registration{
+    width: 100%;
+    background-color: #051019;
+    opacity: 0.7;
+    padding: 40px 0px;
+    border-radius: 5px;
+}
+#button{
+    width:200px;
+    padding: 10px;
+    border-radius: 10px;
+    outline: 0px;
+    background-color: #0c6996;
+    border: 2px solid #01010c;
+    color: aliceblue;
+    font-size: 18px;
+}
+#button2{
+    width:200px;
+    padding: 10px;
+    border-radius: 10px;
+    outline: 0px;
+    background-color: #778899 ;
+    border: 2px solid #01010c;
+    color: aliceblue;
+    font-size: 18px;
+}
+
+.btnii{ 
+    
+    width:98%;
+    padding: 10px;
+    border-radius: 10px;
+    outline: 0px; 
+    position: relative;
+    left: 5px;
+}
+
+.lb{
+    position: relative;
+    left: 5px;
+    color: white;
+    font-style: italic
+}
+.error {
+    font-family: sans-serif;
+    color: yellow;
+    font-size: 16px;
+    
+    
+}

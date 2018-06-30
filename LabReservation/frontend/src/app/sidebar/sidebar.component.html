@@ -1,0 +1,23 @@
+<div id="sidebar">
+  <br><br>
+<div class="toggle-btn" (click)="sidebar()">
+      <br>
+  <div class="dropdown">
+    <span></span>
+    <span></span>
+    <span></span>
+    <div class="dropdown-content">
+      <p>Click to SideBar</p>
+    </div>
+  </div>
+</div>
+
+<ul>
+  <li class="pointer" (click)="moveToHome()"> Home </li>
+  <li class="pointer" > Reservations </li>
+  <li class="pointer" (click)="moveToNewReservation()" > New Reservation </li>
+  <li class="pointer" (click)="moveToProfile()" > Profile </li>
+  <li class="pointer" (click)="logout()" > Logout </li>
+</ul>
+              
+</div>

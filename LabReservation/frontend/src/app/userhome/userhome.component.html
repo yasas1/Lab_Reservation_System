@@ -1,0 +1,41 @@
+<app-sidebar></app-sidebar>
+<br> <br> 
+<div class="box">
+        <p style="text-align:left;font-family:serif; font-size:large; color:darkblue;" > {{username}} </p>
+        <h2 style="text-align: left;">Lab Reservation  </h2>  <br> 
+        	
+</div>
+<strong style="text-align: left; color: darkviolet">Today  </strong><br>
+<strong>Lab A </strong> 
+<button class="buttonshow" (click)="showLabA()" >Show</button>
+<button class="buttonhide" (click)="hideLabA()" >Hide</button>
+
+<div id="sidebart" *ngIf="labA">
+        <div class="panel panel-info">
+
+        <div class="panel-heading" style="text-align:center;" >
+                <strong >Lab A </strong><br>
+                <strong class="text-align: right;">{{today | date:"EEEE, MMMM d, y"}}</strong>
+        </div>
+        
+        
+        <table class="table table-hover">
+            <tr style="background-color: darkgray">
+                <td ><strong>Username</strong></td>
+                <td><strong>Start Time</strong></td>
+                <td><strong>End Time</strong></td>                
+            </tr>
+            
+            <tr *ngFor="let res of reser" >
+              <td>{{res.username}}</td>
+              <td>{{res.stime}}</td>
+              <td>{{res.etime}}</td>
+            </tr>
+        </table>
+        
+        </div>
+</div>
+
+
+
+

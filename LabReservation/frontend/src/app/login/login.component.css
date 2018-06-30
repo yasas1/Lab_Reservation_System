@@ -1,0 +1,41 @@
+body{
+    background-image: url(/assets/images/pc2.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 700px
+}
+#button{
+    width:200px;
+    padding: 10px;
+    border-radius: 5px;
+    outline: 0px;
+    background-color: #0c6996;
+    border: 2px solid #01010c;
+    color: aliceblue;
+    font-size: 18px;
+}
+#button2{
+    width:200px;
+    padding: 10px;
+    border-radius: 5px;
+    outline: 0px;
+    background-color: #f4511e;
+    border: 2px solid #01010c;
+    color: aliceblue;
+    font-size: 18px;
+    opacity: 0.6;
+    
+}
+#buttoni{
+    width:100%;
+    padding: 10px;
+    border-radius: 5px;
+    outline: 0px; 
+}
+
+.error {
+    font-family: sans-serif;
+    color: #E70000;
+    font-size: 16px;
+    opacity: 0.6;
+    transition: all 500ms linear;
+}

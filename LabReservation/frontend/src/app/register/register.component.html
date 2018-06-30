@@ -1,0 +1,40 @@
+<body>
+<div class="page-header">
+    <h1>User Registration</h1>
+</div>
+<div class="col-sm-2"></div>
+  <div class="simple-form" class="col-sm-8">
+  <form [formGroup]="registrationFormGroup" autocomplete="off" id="registration" novalidate >
+  
+    <label class="lb" > Name :</label><br>
+    <input class="btnii" formControlName="name"  type="text" name="name" placeholder="Enter Nname"><br>
+    <p class="error" *ngIf="registrationFormGroup.controls.name.errors?.required && registrationFormGroup.controls.name.touched">Name is required</p>
+
+    <label class="lb" > Email : </label><br>
+    <input class="btnii" formControlName="email"   type="text" name="email" placeholder="email" > <br>
+    <p class="error" *ngIf="registrationFormGroup.controls.email.errors?.required && registrationFormGroup.controls.email.touched">Email is required</p>
+  
+    <label class="lb" > UserName :</label><br>
+    <input class="btnii" formControlName="username"  type="text" name="username" placeholder="username"><br>
+    <p class="error" *ngIf="registrationFormGroup.controls.username.errors?.required && registrationFormGroup.controls.username.touched">Username is required</p>
+    <div [formGroup]="passwordFormGroup">
+      <label class="lb" > Password :</label><br>
+      <input class="btnii" #password1 formControlName="password"   type="password" name="password" placeholder="password" ><br>
+      <p class="error" *ngIf="passwordFormGroup.controls.password.errors?.required && passwordFormGroup.controls.password.touched">Password is required</p>
+
+      <label class="lb" > Confirm Password :</label><br>
+      <input class="btnii"  formControlName="repeatPassword" type="password" name="repeatPassword" placeholder="Confirm Password" ><br>
+      <p class="error" *ngIf="passwordFormGroup.controls.repeatPassword.errors?.required && passwordFormGroup.controls.repeatPassword.touched">Repeat password is required</p>
+      <p class="error" *ngIf="passwordFormGroup.errors?.doesMatchPassword">Password does not match</p>
+
+
+    </div>
+    <br>
+    <button id="button"  type="submit" (click)="register()" [disabled]="!registrationFormGroup.valid" >Register</button>
+    <button id="button2"  type="submit" (click)="moveToLogin()" >Login</button>
+  
+  </form>
+  <br>
+</div>
+
+</body>

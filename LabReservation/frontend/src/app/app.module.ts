@@ -8,13 +8,14 @@ import { RegisterComponent } from './register/register.component';
 import { UserhomeComponent } from './userhome/userhome.component';
 import { ReactiveFormsModule , FormsModule } from '@angular/forms';
 import { UserService } from './user.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule  } from '@angular/common/http';
 import { ProfileComponent } from './profile/profile.component';
 import { DoReservationComponent } from './do-reservation/do-reservation.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { DoreservationService } from './doreservation.service';
 import { PublicHomeComponent } from './public-home/public-home.component';
 import { ReservationsService } from './reservations.service';
+import { ViewreservationsComponent } from './viewreservations/viewreservations.component';
 
 @NgModule({
   declarations: [
@@ -25,14 +26,16 @@ import { ReservationsService } from './reservations.service';
     ProfileComponent,
     DoReservationComponent,
     SidebarComponent,
-    PublicHomeComponent
+    PublicHomeComponent,
+    ViewreservationsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    
   ],
   providers: [UserService, DoreservationService,ReservationsService],
   bootstrap: [AppComponent]

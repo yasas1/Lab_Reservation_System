@@ -1,20 +1,41 @@
 <app-sidebar></app-sidebar>
 <br> <br> 
-<div class="box">
+<div class="container-aboutUs1">
         <p style="text-align:left;font-family:serif; font-size:large; color:darkblue;" > {{username}} </p>
-        <h2 style="text-align: left;">Lab Reservation  </h2>  <br> 
-        	
+        <h2 style="text-align: left;">Lab Reservation  </h2>  <br>     	
 </div>
-<strong style="text-align: left; color: darkviolet">Today  </strong><br>
-<strong>Lab A </strong> 
-<button class="buttonshow" (click)="showLabA()" >Show</button>
-<button class="buttonhide" (click)="hideLabA()" >Hide</button>
+<br>
+<div class="container-aboutUs" style="border: 2px solid blue;">
+<form [formGroup]="viewresForm" >
+<div class="col-sm-8">
+        <div class="col-sm-2">
+        <strong style="text-align: left; color: darkviolet">Today  </strong>
+        </div>  
+        <div class="col-sm-6">
+        <strong>
+                <label class="lb">Select Lab :</label>
+                <select formControlName="lab" class="btnii" name="lab" [(ngModel)]="lab" >
+                        <option selected="selected"  value="A" >Lab A</option>
+                        <option value="B">Lab B</option>
+                        <option value="C">Lab C</option>
+                        <option value="D">Lab D</option>              
+                </select>
+        </strong> 
+        </div>
 
-<div id="sidebart" *ngIf="labA">
+</div>
+
+      <button class="button2" type="submit" (click)="getlabAreservations()" [disabled]="!viewresForm.valid">Submit</button>
+
+</form>
+</div>
+<br>
+
+<div id="sidebart"  style="height: 200px; overflow: auto;">
         <div class="panel panel-info">
 
         <div class="panel-heading" style="text-align:center;" >
-                <strong >Lab A </strong><br>
+                
                 <strong class="text-align: right;">{{today | date:"EEEE, MMMM d, y"}}</strong>
         </div>
         
@@ -35,7 +56,11 @@
         
         </div>
 </div>
-
+<br>
+<div>
+        <canvas id="bar-chart" width="700" height="250"></canvas>
+</div>
+<br><br><br>
 
 
 

@@ -1,0 +1,98 @@
+<app-sidebar></app-sidebar>
+<br>
+<div class="box">
+  <h2 style="text-align: left;">View Reservations  </h2>  <br>     	
+</div>
+
+<div class="container-aboutUs" style="border: 2px solid blue;">
+<form [formGroup]="viewresForm" >
+  <div class="col-sm-3">
+    <label class="lb">Select Lab :</label>
+    <select formControlName="lab" class="btnii" name="lab" [(ngModel)]="lab" >
+        <option selected="selected"  value="A" >Lab A</option>
+        <option value="B">Lab B</option>
+        <option value="C">Lab C</option>
+        <option value="D">Lab D</option>              
+    </select>
+  </div>
+  
+  <div class="col-sm-5">
+      <div class="col-sm-3"> <label class="lb"> Date : </label>  </div>
+      <div class="col-sm-2">
+          <input formControlName="date" type="date" name="bate" [(ngModel)]="date"><br><br> <br>
+      </div>
+    
+    
+  </div>
+
+  <div class="col-sm-3">
+    <button id="button2" type="submit" (click)="viewreservation()" [disabled]="!viewresForm.valid">Submit</button>
+  </div>
+
+</form>
+</div>
+<br>
+
+<div style="height: 200px; overflow: auto;  ">
+<table class="table table-hover" >
+  <tr style="background-color: darkgray;">
+      <td ><strong>Username</strong></td>
+      <td><strong>Start Time</strong></td>
+      <td><strong>End Time</strong></td>                
+  </tr>
+  
+  <tr *ngFor="let res of reser" >
+    <td>{{res.username}}</td>
+    <td>{{res.stime}}</td>
+    <td>{{res.etime}}</td>
+  </tr>
+</table>
+</div>
+<br>
+
+<div class="container-aboutUs1" style="border: 2px solid blue;">
+    <form [formGroup]="checkAvailableForm" >
+      <div class="col-md-6">
+        <label class="lb">Select Lab :</label>
+        <select formControlName="lab" class="btnii" name="lab" [(ngModel)]="clab" >
+            <option selected="selected"  value="A" >Lab A</option>
+            <option value="B">Lab B</option>
+            <option value="C">Lab C</option>
+            <option value="D">Lab D</option>              
+        </select>
+        
+      </div>
+      
+      <div class="col-sm-6">
+          <div class="col-md-2"> <label class="lb"> Date : </label>  </div>
+          <div class="col-md-1">
+              <input formControlName="cadate" type="date" name="bate" [(ngModel)]="cdate"><br><br> <br>
+          </div>
+      </div>
+      
+      <div class="col-sm-6">
+          <div class="col-md-3">
+              <label class="lb">Start Time :</label>
+              <input formControlName="stime"  type="time" name="stime" [(ngModel)]="stime">
+          </div>
+          <div class="col-md-3">
+              <label class="lb">End Time :</label>
+              <input formControlName="etime"  type="time" name="etime" [(ngModel)]="etime">
+          </div>
+      </div>
+      <div class="col-sm-2"></div>
+      <div class="col-sm-3">
+        <button id="button2" type="submit" (click)="checkAvailable()" [disabled]="!checkAvailableForm.valid">Availability</button>
+      </div>
+    
+    </form>
+</div>
+<br>
+<div *ngIf="msgbox" class="col-sm-12">
+    <strong><p style="border: 2px solid black;
+    
+    margin: auto;    
+    padding: 20px;
+    text-align: center;">  {{availbelMsg.message}}</p></strong><
+</div>
+

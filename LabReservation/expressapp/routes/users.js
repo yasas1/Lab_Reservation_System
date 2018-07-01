@@ -16,8 +16,9 @@ async function addToDB(req,res){
   var user = new User({
     name:req.body.name,
     username:req.body.username,
-    password:User.hashPassword(req.body.password),
-    email:req.body.email
+    password:User.hashPassword(req.body.passwordFormGroup.password),
+    email:req.body.email,
+    
   });
   try{
     doc = await user.save();
@@ -41,6 +42,19 @@ router.post('/login',function(req,res,next){
     });
   })(req, res, next);
 
+});
+
+router.get('/checkposition/:username',function(req,res,next){
+
+  User.find({ username:req.params.username}).select('position').exec(function (err, position) {
+    if (err){
+        res.send(err);
+    }
+    else {
+        res.json(position);
+       // res.send(date);
+    }
+  });
 });
 
 router.get('/user',isValidUser,function(req,res,next){

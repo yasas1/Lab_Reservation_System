@@ -51,9 +51,7 @@ export class DoReservationComponent implements OnInit {
 
     this._reserve.doReservation(JSON.stringify(this.doresForm.value))
     .subscribe(
-      data=>{//console.log(data);
-        this.msg="Reservation Success";this.msgstate=true
-    },
+      data=>{console.log(data);this.msg="Reservation Success";this.msgstate=true},
       error=>console.error(error)
     )
     //console.log(JSON.stringify(this.registerForm.value));

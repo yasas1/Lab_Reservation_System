@@ -72,7 +72,7 @@ router.get('/checkAvailable/:lab/:date/:stime/:etime',function(req,res,next){
         res.send(err);
     }
     else {
-      //res.json(reservations);      
+      console.log(reservations);      
       //reservations[0].username)
         //res.json(reservations); res.json(reservations.length);
        //res.send(reservations[0].username);

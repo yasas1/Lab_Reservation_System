@@ -64,6 +64,7 @@ export class UserhomeComponent implements OnInit {
           this.countB=this.count[1].total;
           this.countC=this.count[2].total;
           this.countD=this.count[3].total;
+          
           console.error(this.countC);
           this.barchar();
         },

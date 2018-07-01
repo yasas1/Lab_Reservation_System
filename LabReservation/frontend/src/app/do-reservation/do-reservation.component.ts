@@ -54,7 +54,7 @@ export class DoReservationComponent implements OnInit {
       data=>{console.log(data);this.msg="Reservation Success";this.msgstate=true},
       error=>console.error(error)
     )
-    //console.log(JSON.stringify(this.registerForm.value));
+    console.log(JSON.stringify(this.doresForm.value));
   }
 
 }

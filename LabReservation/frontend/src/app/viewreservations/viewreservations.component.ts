@@ -27,7 +27,7 @@ export class ViewreservationsComponent implements OnInit {
   }
 
   lab:string="A";
-  date:Date;//=new Date("2018-06-18");
+  date:Date=new Date("2018-06-18");
   reser: Labreservation[];
 
   viewreservation(lab=this.lab,date=this.date){
@@ -50,7 +50,7 @@ export class ViewreservationsComponent implements OnInit {
   });
 
   clab:string="A";
-  cdate:Date;//=new Date("2018-06-18");
+  cdate:Date=new Date("2018-06-18");
   stime:Time;
   etime:Time;
   availbelMsg:any={};
@@ -64,7 +64,12 @@ export class ViewreservationsComponent implements OnInit {
 
     this._labreservations.checkAvailable(lab,date,stime,etime)
       .subscribe(
-        data=>{this.msgbox=true;this.availbelMsg=data;console.log(this.availbelMsg.message);console.log(this.stime);},
+        data=>{
+          this.msgbox=true;
+          this.availbelMsg=data;
+          //console.log(this.availbelMsg.message);
+          //console.log(this.stime);
+        },
         error=>console.error(error)
     );
   }

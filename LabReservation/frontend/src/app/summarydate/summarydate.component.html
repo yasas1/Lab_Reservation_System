@@ -1,0 +1,113 @@
+<app-sidebar></app-sidebar>
+<br>
+<div class="box">
+  <h2 style="text-align: left;">All Lab Reservations for Date   </h2>  
+  <p style="text-align:left;font-family:serif; font-size:large; color:darkblue;" > {{username}} </p>
+  <button class="btn btn-warning"  onclick="window.print();" target="_blank" style="cursor:pointer; ">Print</button>    	
+</div>
+<br>
+<div class="container-aboutUs" style="border: 2px solid blue;">
+  <form [formGroup]="viewresForm" >
+    
+    <div>
+        <div> <label class="lb"> Date : </label>  </div>
+        <div>
+            <input formControlName="date" type="date" name="bate" [(ngModel)]="date"><br><br> <br>
+        </div>
+      
+      
+    </div>
+  
+    <div>
+      <button class="btn btn-success" type="submit" (click)="getlabAreservations()" [disabled]="!viewresForm.valid">Submit</button>
+    </div>
+  
+  </form>
+  </div>
+  <br>
+  
+  <div *ngIf="disA" style="height: 200px; overflow: auto;  ">
+      <strong> <h3>Lab A</h3> </strong>
+  <table class="table table-hover" >
+    <tr style="background-color: darkgray;">
+        <td ><strong>Username</strong></td>
+        <td><strong>Start Time</strong></td>
+        <td><strong>End Time</strong></td>                
+    </tr>
+    
+    <tr *ngFor="let res of resA" >
+      <td>{{res.username}}</td>
+      <td>{{res.stime}}</td>
+      <td>{{res.etime}}</td>
+    </tr>
+  </table>
+  </div>
+  <br>
+
+<div *ngIf="disB" style="height: 200px; overflow: auto;  ">
+    <h3>Lab B</h3>
+      <table class="table table-hover" >
+        <tr style="background-color: darkgray;">
+            <td ><strong>Username</strong></td>
+            <td><strong>Start Time</strong></td>
+            <td><strong>End Time</strong></td>                
+        </tr>
+        
+        <tr *ngFor="let res of resB" >
+          <td>{{res.username}}</td>
+          <td>{{res.stime}}</td>
+          <td>{{res.etime}}</td>
+        </tr>
+      </table>
+  </div>
+<br>
+
+<div *ngIf="disC" style="height: 200px; overflow: auto;  ">
+    <h3>Lab C</h3>
+    <table class="table table-hover" >
+      <tr style="background-color: darkgray;">
+          <td ><strong>Username</strong></td>
+          <td><strong>Start Time</strong></td>
+          <td><strong>End Time</strong></td>                
+      </tr>
+      
+      <tr *ngFor="let res of resC" >
+        <td>{{res.username}}</td>
+        <td>{{res.stime}}</td>
+        <td>{{res.etime}}</td>
+      </tr>
+    </table>
+</div>
+<br>
+
+<div *ngIf="disC" style="height: 200px; overflow: auto;  ">
+    <h3>Lab D</h3>
+    <table class="table table-hover" >
+      <tr style="background-color: darkgray;">
+          <td ><strong>Username</strong></td>
+          <td><strong>Start Time</strong></td>
+          <td><strong>End Time</strong></td>                
+      </tr>
+      
+      <tr *ngFor="let res of resD" >
+        <td>{{res.username}}</td>
+        <td>{{res.stime}}</td>
+        <td>{{res.etime}}</td>
+      </tr>
+    </table>
+</div>
+<br>
+
+<div *ngIf="!nores">
+  
+        <canvas  id="bar-chart" width="700" height="250"></canvas>
+      </div>
+
+<br><br>
+<div *ngIf="nores" >
+        <strong>
+          <p style="border: 2px solid black;margin: auto; padding: 20px;text-align: center;"> 
+             There are no reservations  
+          </p>
+        </strong>
+</div>

@@ -16,7 +16,8 @@
   <li class="pointer" (click)="moveToHome()"> Home </li>
   <li class="pointer" (click)="moveToViewReservation()" > View Reservations </li>
   <li class="pointer" (click)="moveToNewReservation()" > New Reservation </li>
-  <li class="pointer" *ngIf="admin" > Check Admin Bro </li>
+  <li class="pointer" *ngIf="admin" (click)="moveToReport()" > Reservation Report </li>
+  <li class="pointer" *ngIf="admin" (click)="moveToSummary()" > Summary By Date </li>
   <li class="pointer" (click)="moveToProfile()" > Profile </li>
   <li class="pointer" (click)="logout()" > Logout </li>
 </ul>

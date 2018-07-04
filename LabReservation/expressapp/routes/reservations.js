@@ -29,19 +29,7 @@ async function addToDB(req,res){
 var date=new Date("2018-06-18"); // change the today date 
 //new Date(Date.now()).toLocaleString();
 
-router.get('/labAreservation/:lab',function(req,res,next){
-  
-  Reservation.find({ lab:req.params.lab, date:date }).select('username stime etime').exec(function (err, reservations) {
-    if (err){
-        res.send(err);
-    }
-    else {
-        res.json(reservations);
-       // res.send(date);
-    }
-  });
 
-});
 //,date:req.params.date
 router.get('/viewreservations/:lab/:date',function(req,res,next){
   
@@ -72,7 +60,7 @@ router.get('/checkAvailable/:lab/:date/:stime/:etime',function(req,res,next){
         res.send(err);
     }
     else {
-      console.log(reservations);      
+      //res.json(reservations);      
       //reservations[0].username)
         //res.json(reservations); res.json(reservations.length);
        //res.send(reservations[0].username);
@@ -109,7 +97,7 @@ router.get('/checkAvailable/:lab/:date/:stime/:etime',function(req,res,next){
 
 router.get('/getlabrescount/:date',function(req,res,next){
   var dd = new Date(req.params.date);
- // console.log(dd);
+  console.log(dd);
   Reservation.aggregate( [{ $match : {date :dd} }, { $group:{ _id: "$lab", total:{$sum:1} } } ] ).sort({_id:1}).exec(function (err, reservations) {
     if (err){
         res.send(err);

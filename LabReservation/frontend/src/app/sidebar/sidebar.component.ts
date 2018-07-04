@@ -20,9 +20,7 @@ export class SidebarComponent implements OnInit {
     .subscribe(
       data=>{this.addName(data);this.checkposition();},
       error=>this._router.navigate(['/login'])
-    );
-
-    
+    );  
 
   }
 
@@ -36,7 +34,6 @@ export class SidebarComponent implements OnInit {
   }
 
   ngOnInit() {  
-
     
   }
 
@@ -44,7 +41,7 @@ export class SidebarComponent implements OnInit {
     
     this._user.checkposition(this.username)
       .subscribe(
-        data=>{console.log(data);this.position=data;console.log(this.position[0].position);
+        data=>{this.position=data;//console.log(this.position[0].position);
           if(this.position[0].position == "admin"){
             this.admin=true;
           }
@@ -76,6 +73,14 @@ export class SidebarComponent implements OnInit {
 
   moveToHome(){
     this._router.navigate(['/user']);
+  }
+
+  moveToReport(){
+    this._router.navigate(['/report']);
+  }
+
+  moveToSummary(){
+    this._router.navigate(['/summary']);
   }
 
 }

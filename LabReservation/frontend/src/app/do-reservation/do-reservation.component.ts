@@ -45,16 +45,16 @@ export class DoReservationComponent implements OnInit {
 
   doreservation(){
 
-    if(!this.doresForm.valid || (this.doresForm.controls.password.value != this.doresForm.controls.cpass.value)){
+    /*if(!this.registrationFormGroup.valid || (this.registrationFormGroup.controls.password.value != this.registrationFormGroup.controls.cpass.value)){
       console.log("Invalid Form"); return;
-    }
+    }*/
 
     this._reserve.doReservation(JSON.stringify(this.doresForm.value))
     .subscribe(
       data=>{console.log(data);this.msg="Reservation Success";this.msgstate=true},
       error=>console.error(error)
     )
-    console.log(JSON.stringify(this.doresForm.value));
+    //console.log(JSON.stringify(this.registerForm.value));
   }
 
 }

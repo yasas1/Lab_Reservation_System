@@ -16,6 +16,8 @@ import { DoreservationService } from './doreservation.service';
 import { PublicHomeComponent } from './public-home/public-home.component';
 import { ReservationsService } from './reservations.service';
 import { ViewreservationsComponent } from './viewreservations/viewreservations.component';
+import { ReportComponent } from './report/report.component';
+import { SummarydateComponent } from './summarydate/summarydate.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { ViewreservationsComponent } from './viewreservations/viewreservations.c
     DoReservationComponent,
     SidebarComponent,
     PublicHomeComponent,
-    ViewreservationsComponent
+    ViewreservationsComponent,
+    ReportComponent,
+    SummarydateComponent
   ],
   imports: [
     BrowserModule,

@@ -54,16 +54,16 @@ export class RegisterComponent implements OnInit {
 
   register(){
 
-    if(!this.registrationFormGroup.valid || (this.registrationFormGroup.controls.password.value != this.registrationFormGroup.controls.cpass.value)){
+    /*if(!this.registrationFormGroup.valid || (this.registrationFormGroup.controls.password.value != this.registrationFormGroup.controls.cpass.value)){
       console.log("Invalid Form"); return;
-    }
+    }*/
 
     this._userService.register(JSON.stringify(this.registrationFormGroup.value))
     .subscribe(
       data=>{console.log(data), this._router.navigate(['/login'])},
       error=>console.error(error)
     )
-    console.log(JSON.stringify(this.registrationFormGroup.value));
+    //console.log(JSON.stringify(this.registerForm.value));
   }
 
 }

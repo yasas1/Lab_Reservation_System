@@ -1,0 +1,49 @@
+<app-sidebar></app-sidebar>
+<br>
+<div class="box">
+  <h2 style="text-align: left;">Reservations Report  </h2>  
+  <p style="text-align:left;font-family:serif; font-size:large; color:darkblue;" > {{username}} </p>
+  <button class="btn btn-warning"  onclick="window.print();" target="_blank" style="cursor:pointer; ">Print</button>    	
+</div>
+<br>
+<div clall="well">
+<form [formGroup]="viewresForm" >
+  <div>
+    <label class="lb">Select Lab :</label>
+    <select formControlName="lab" class="btnii" name="lab" [(ngModel)]="lab" >
+        <option selected="selected"  value="A" >Lab A</option>
+        <option value="B">Lab B</option>
+        <option value="C">Lab C</option>
+        <option value="D">Lab D</option>              
+    </select>
+  </div>
+  
+      <div > <label class="lb"> Date : </label>  </div>
+      <div >
+          <input formControlName="date" type="date" name="bate" [(ngModel)]="date"><br><br> <br>
+      </div>
+      
+  <div >
+    <button class="btn btn-success" type="submit" (click)="viewreservation()" [disabled]="!viewresForm.valid">Reservations</button>
+  </div>
+
+</form>
+</div>
+<br>
+
+<div style="border: 2px solid black; ">
+<table class="table table-hover" >
+  <tr style="background-color: darkgray;">
+      <td ><strong>Username</strong></td>
+      <td><strong>Start Time</strong></td>
+      <td><strong>End Time</strong></td>                
+  </tr>
+  
+  <tr *ngFor="let res of reser" >
+    <td>{{res.username}}</td>
+    <td>{{res.stime}}</td>
+    <td>{{res.etime}}</td>
+  </tr>
+</table>
+</div>
+<br>

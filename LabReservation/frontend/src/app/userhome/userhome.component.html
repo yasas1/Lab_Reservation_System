@@ -3,7 +3,9 @@
 <div class="container-aboutUs1">
         <p style="text-align:left;font-family:serif; font-size:large; color:darkblue;" > {{username}} </p>
         <h2 style="text-align: left;">Lab Reservation  </h2>  <br>     	
+         
 </div>
+
 <br>
 <div class="container-aboutUs" style="border: 2px solid blue;">
 <form [formGroup]="viewresForm" >
@@ -57,10 +59,17 @@
         </div>
 </div>
 <br>
-<div>
+<div *ngIf="!nores" style="border: 2px solid black;">
         <canvas id="bar-chart" width="700" height="250"></canvas>
 </div>
-<br><br><br>
+<br><br>
+<div *ngIf="nores">
+        <strong><p style="border: 2px solid black;
+    
+                margin: auto;    
+                padding: 20px;
+                text-align: center;">  There are no reservations  today </p></strong>
+</div>
 
 
 

@@ -1,49 +1,32 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
-import { ReservationsService } from '../reservations.service';
 import { Labreservation } from '../labreservation';
+import { ReservationsService } from '../reservations.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import * as Chart from 'chart.js';
 
-
 @Component({
-  selector: 'app-userhome',
-  templateUrl: './userhome.component.html',
-  styleUrls: ['./userhome.component.css']
+  selector: 'app-summarydate',
+  templateUrl: './summarydate.component.html',
+  styleUrls: ['./summarydate.component.css']
 })
-export class UserhomeComponent implements OnInit {
+export class SummarydateComponent implements OnInit {
 
   username:string='';
 
-  today=new Date();            // today date
-  formatDate(date:Date){
-    const day =  date.getDate().toString;
-    const month =  (date.getMonth() +1).toString;
-    const year =  date.getFullYear().toString;
-
-    return year+"-"+month+"-"+day;
-  }
-  
-  labA:boolean=false;
-
-  lab:string="A";
-
-  reser: Labreservation[];
-
-  
-
-  constructor(private _user:UserService, private _router:Router,private _labreservations:ReservationsService) { 
+  constructor(private _user:UserService, private _router:Router,private _labreservations:ReservationsService) {
     this._user.user()
     .subscribe(
       data=>this.addName(data),
       error=>this._router.navigate(['/login'])
     );
-    
-  }
+   }
 
-  viewresForm:FormGroup = new FormGroup({  
-    lab: new FormControl(null,Validators.required), 
+   viewresForm:FormGroup = new FormGroup({
+    
+    date: new FormControl(null,Validators.required)
+    
   });
 
   addName(data){
@@ -51,13 +34,70 @@ export class UserhomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getlabAreservations(this.lab);
-    this.getlabrescount();
-    
-   
   }
 
-  date:Date =new Date("2018-06-27");
+  date:Date;// =new Date("2018-06-18");
+
+  resA:Labreservation[];
+  resB:Labreservation[];
+  resC:Labreservation[];
+  resD:Labreservation[];
+
+  disA:boolean;
+  disB:boolean;
+  disC:boolean;
+  disD:boolean;
+
+  getlabAreservations(){
+
+    this.disA=false;
+    this.disB=false;
+    this.disC=false;
+    this.disD=false;
+    
+    this._labreservations.viewreservations("A",this.date)
+      .subscribe(
+        data=>{this.resA=data;
+          if(this.resA.length>0){
+            this.disA=true;
+          }
+        },//console.log(this.resA)
+        error=>console.error(error)
+    );
+
+    this._labreservations.viewreservations("B",this.date)
+      .subscribe(
+        data=>{this.resB=data;
+          if(this.resB.length>0){
+            this.disB=true;
+          }
+        },
+        error=>console.error(error)
+    );
+
+    this._labreservations.viewreservations("C",this.date)
+      .subscribe(
+        data=>{this.resC=data;//console.log(this.resC.length);
+          if(this.resC.length>0){
+            this.disC=true;
+          }
+        },
+        error=>console.error(error)
+    );
+
+    this._labreservations.viewreservations("D",this.date)
+      .subscribe(
+        data=>{this.resD=data;
+          if(this.resD.length>0){
+            this.disD=true;
+          }
+        },
+        error=>console.error(error)
+    );
+
+    this.getlabrescount();
+
+  }
 
   count:any={};  
 
@@ -67,14 +107,15 @@ export class UserhomeComponent implements OnInit {
   countD:number=0;
 
   nores:boolean=false;
+  
 
-  getlabrescount(date=this.date){ // set today date for get todat toISOString()
-
-    console.log(this.formatDate(this.today)); //.toISOString()
-
-    this._labreservations.countlab(date)
+  getlabrescount(){
+    this.nores=false;
+    
+    this._labreservations.countlab(this.date)
       .subscribe(
-        data=>{this.count=data; console.log(this.count[0]);
+        data=>{this.count=data; //console.log(this.count.length); //this.count[0].length
+
           if(this.count==null){
             this.nores=true;
             //return;           
@@ -103,8 +144,7 @@ export class UserhomeComponent implements OnInit {
           this.countA=0;
           this.countB=0;
           this.countC=0;
-          this.countD=0;
-          
+          this.countD=0;               
         },
         error=>console.error(error)
     );
@@ -149,23 +189,6 @@ export class UserhomeComponent implements OnInit {
         }
       }
   });
-  }
-
-  getlabAreservations(lab=this.lab,date=this.date){
-    this._labreservations.viewreservations(lab,date)
-      .subscribe(
-        data=>{this.reser=data;},
-        error=>console.error(error)
-    );
-
-  }
-
-  showLabA(){
-    this.labA=true;
-    
-  }
-  hideLabA(){
-    this.labA=false;
   }
 
 }

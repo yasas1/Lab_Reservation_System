@@ -168,5 +168,33 @@ router.get('/getlabrescount/:date',function(req,res,next){
 
 });
 
+router.get('/resyour/:username/:date',function(req,res,next){
+  
+  Reservation.find({ username:req.params.username, date:req.params.date }).select('lab stime etime').sort({lab:1}).exec(function (err, reservations) {
+    if (err){
+        res.send(err);
+    }
+    else {
+        res.json(reservations);
+       // res.send(date);
+    }
+  });
+
+});
+
+router.delete('/deleteres/:id',function(req,res,next){
+  
+  Reservation.remove({ _id:req.params.id }).exec(function (err, reservations) {
+    if (err){
+        res.send(err);
+    }
+    else {
+        res.json(reservations);
+       // res.send(date);
+    }
+  });
+
+});
+
 
 module.exports = router;

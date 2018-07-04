@@ -96,9 +96,9 @@ export class UserhomeComponent implements OnInit {
             if(this.count[3] != null){
               this.countC=this.count[3].total;
             }                           
-            //console.log(this.countC);
+            console.log(this.countC);
             this.barchar();
-            //this.nores=false;
+            this.nores=false;
           }
           this.countA=0;
           this.countB=0;
@@ -160,12 +160,6 @@ export class UserhomeComponent implements OnInit {
 
   }
 
-  showLabA(){
-    this.labA=true;
-    
-  }
-  hideLabA(){
-    this.labA=false;
-  }
+  
 
 }

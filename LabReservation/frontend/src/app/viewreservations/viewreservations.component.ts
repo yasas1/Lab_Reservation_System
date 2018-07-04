@@ -57,10 +57,10 @@ export class ViewreservationsComponent implements OnInit {
   msgbox:boolean=false;
 
   checkAvailable(lab=this.clab,date=this.cdate,stime=this.stime,etime=this.etime){
-    /*console.log(this.stime);
+    console.log(this.stime);
     console.log(this.etime);
     console.log(this.cdate);
-    console.log(this.clab);*/
+    console.log(this.clab);
 
     this._labreservations.checkAvailable(lab,date,stime,etime)
       .subscribe(

@@ -114,7 +114,9 @@ export class SummarydateComponent implements OnInit {
     
     this._labreservations.countlab(this.date)
       .subscribe(
-        data=>{this.count=data; //console.log(this.count.length); //this.count[0].length
+        data=>{this.count=data;
+           console.log(this.count.length); 
+           this.count[0].length
 
           if(this.count==null){
             this.nores=true;
@@ -137,9 +139,9 @@ export class SummarydateComponent implements OnInit {
             if(this.count[3] != null){
               this.countC=this.count[3].total;
             }                           
-            //console.log(this.countC);
-            this.barchar();
-            //this.nores=false;
+            console.log(this.countC);
+            //this.barchar();
+            this.nores=false;
           }
           this.countA=0;
           this.countB=0;
@@ -151,7 +153,7 @@ export class SummarydateComponent implements OnInit {
     
 
   }
-
+/*
   barchar(){
    
     new Chart(document.getElementById("bar-chart"), {
@@ -189,6 +191,6 @@ export class SummarydateComponent implements OnInit {
         }
       }
   });
-  }
+  }*/
 
 }

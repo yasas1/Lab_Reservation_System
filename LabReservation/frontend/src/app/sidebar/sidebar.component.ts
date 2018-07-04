@@ -41,7 +41,8 @@ export class SidebarComponent implements OnInit {
     
     this._user.checkposition(this.username)
       .subscribe(
-        data=>{this.position=data;//console.log(this.position[0].position);
+        data=>{this.position=data;
+          console.log(this.position[0].position);
           if(this.position[0].position == "admin"){
             this.admin=true;
           }

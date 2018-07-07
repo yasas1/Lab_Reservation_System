@@ -7,12 +7,8 @@ router.post('/doReservation', function(req, res, next) {
   var stime=req.body.stime;
   var etime=req.body.etime;
 
-  var dd = new Date(req.body.date);
-  console.log(dd);
-  console.log(req.body.lab);
-  console.log(req.body.username);// { "$or":[ {lab:req.body.lab},{username:req.body.username} ] }
-
-  Reservation.find({ $and:[ { $or:[ {lab:req.body.lab},{username:req.body.username} ] },  {date:dd}  ] } ).select('username stime etime lab').exec(function (err, reservations) {
+  
+  Reservation.find({ lab:req.body.lab, date:req.body.date}).select('username stime etime').exec(function (err, reservations) {
     if (err){
         res.send(err);
     }
@@ -28,36 +24,25 @@ router.post('/doReservation', function(req, res, next) {
        else{
           
           for(i in reservations){
-            console.log(reservations[i].stime);
+            //res.send(val.stime); console.log(reservations[i].stime);
+         
              //db st 8 and req st 8
             if(reservations[i].stime == stime){
-              if(reservations[i].username==req.body.username && reservations[i].lab!=req.body.lab){
-                return res.json({ otherlab: true, message: 'Overlap with your another Reservations on Lab '+ reservations[i].lab +' Check Your Reservations' });
-              }else{
-                return res.json({ available: false, message: 'Lab is not available' });
-              }       
+              return res.json({ available: false, message: 'Lab is not available' });
             }
             //db st 8-10 and req st 9
             else if(reservations[i].stime < stime && reservations[i].etime > stime){
-              if(reservations[i].username==req.body.username && reservations[i].lab!=req.body.lab){
-                return res.json({ otherlab: true, message: 'Overlap with your another Reservations on Lab '+ reservations[i].lab +' Check Your Reservations'  });
-              }else{
-                return res.json({ available: false, message: 'Lab is not available' });
-              }
+              return res.json({ available: false, message: 'Lab is not available' });
             }//db st 8-10 and req st 7-9 or 7-11
             else if(reservations[i].stime > stime && reservations[i].stime < etime){
-              if(reservations[i].username==req.body.username && reservations[i].lab!=req.body.lab){
-                return res.json({ otherlab: true, message: 'Overlap with your another Reservations on Lab '+ reservations[i].lab +' Check Your Reservations' });
-              }else{
-                return res.json({ available: false, message: 'Lab is not available' });
-              }
+              return res.json({ available: false, message: 'Lab is not available' });
             }
             else{
-              
+              addToDB(req,res);
               //return res.json({ available: true, message: 'Lab is available' });
             }
-          }  
-          addToDB(req,res);
+          }       
+         
        }
 
     }
@@ -157,34 +142,6 @@ router.get('/getlabrescount/:date',function(req,res,next){
   var dd = new Date(req.params.date);
   console.log(dd);
   Reservation.aggregate( [{ $match : {date :dd} }, { $group:{ _id: "$lab", total:{$sum:1} } } ] ).sort({_id:1}).exec(function (err, reservations) {
-    if (err){
-        res.send(err);
-    }
-    else {
-        res.json(reservations);
-       // res.send(date);
-    }
-  });
-
-});
-
-router.get('/resyour/:username/:date',function(req,res,next){
-  
-  Reservation.find({ username:req.params.username, date:req.params.date }).select('lab stime etime').sort({lab:1}).exec(function (err, reservations) {
-    if (err){
-        res.send(err);
-    }
-    else {
-        res.json(reservations);
-       // res.send(date);
-    }
-  });
-
-});
-
-router.delete('/deleteres/:id',function(req,res,next){
-  
-  Reservation.remove({ _id:req.params.id }).exec(function (err, reservations) {
     if (err){
         res.send(err);
     }

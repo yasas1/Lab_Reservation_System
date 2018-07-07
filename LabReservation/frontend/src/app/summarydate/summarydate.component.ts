@@ -114,9 +114,8 @@ export class SummarydateComponent implements OnInit {
     
     this._labreservations.countlab(this.date)
       .subscribe(
-        data=>{this.count=data;
-           console.log(this.count.length); 
-           this.count[0].length
+        data=>{this.count=data; console.log(this.count); 
+          //this.count[0].length
 
           if(this.count==null){
             this.nores=true;
@@ -128,20 +127,39 @@ export class SummarydateComponent implements OnInit {
           }
           else{
             if(this.count[0] != null){
-              this.countA=this.count[0].total;
+              if(this.count[0]._id == "A"){
+                this.countA=this.count[0].total;
+              }else if(this.count[0]._id == "B"){
+                this.countB=this.count[0].total;
+              }else if(this.count[0]._id == "C"){
+                this.countC=this.count[0].total;
+              }else{
+                this.countD=this.count[0].total;
+              }
+              
             } 
             if(this.count[1] != null){
-              this.countB=this.count[1].total;
+              if(this.count[1]._id == "B"){
+                this.countB=this.count[1].total;
+              }else if(this.count[1]._id == "C"){
+                this.countC=this.count[1].total;
+              }else{
+                this.countD=this.count[1].total;
+              }
             }
             if(this.count[2] != null){
-              this.countD=this.count[2].total;
+              if(this.count[2]._id == "C"){
+                this.countC=this.count[2].total;
+              }else{
+                this.countD=this.count[2].total;
+              }
             }
             if(this.count[3] != null){
-              this.countC=this.count[3].total;
+              this.countD=this.count[3].total;
             }                           
-            console.log(this.countC);
-            //this.barchar();
-            this.nores=false;
+            //console.log(this.countC);
+            this.barchar();
+            //this.nores=false;
           }
           this.countA=0;
           this.countB=0;
@@ -153,7 +171,7 @@ export class SummarydateComponent implements OnInit {
     
 
   }
-/*
+
   barchar(){
    
     new Chart(document.getElementById("bar-chart"), {
@@ -191,6 +209,6 @@ export class SummarydateComponent implements OnInit {
         }
       }
   });
-  }*/
+  }
 
 }

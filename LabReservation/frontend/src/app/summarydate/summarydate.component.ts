@@ -157,9 +157,9 @@ export class SummarydateComponent implements OnInit {
             if(this.count[3] != null){
               this.countD=this.count[3].total;
             }                           
-            //console.log(this.countC);
-            this.barchar();
-            //this.nores=false;
+            console.log(this.countC);
+            //this.barchar();
+            this.nores=false;
           }
           this.countA=0;
           this.countB=0;
@@ -171,7 +171,7 @@ export class SummarydateComponent implements OnInit {
     
 
   }
-
+  /*
   barchar(){
    
     new Chart(document.getElementById("bar-chart"), {
@@ -209,6 +209,6 @@ export class SummarydateComponent implements OnInit {
         }
       }
   });
-  }
+  }*/
 
 }

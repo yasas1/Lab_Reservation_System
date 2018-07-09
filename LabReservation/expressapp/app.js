@@ -11,7 +11,7 @@ var reservationsRouter = require('./routes/reservations');
 var cors = require('cors');
 var mongoose = require('mongoose');
 
-var bodyParser = require('body-parser');
+//var bodyParser = require('body-parser');
 
 var app = express();
 
@@ -20,8 +20,8 @@ app.use(cors({
   credentials:true
 }));
 
-app.use(bodyParser.json()); 
-app.use(bodyParser.urlencoded({ extended: true }));
+//app.use(bodyParser.json()); 
+//app.use(bodyParser.urlencoded({ extended: true }));
 
 mongoose.connect('mongodb://localhost:27017/lab', function(err) {
     if (err) {

@@ -16,7 +16,7 @@ router.post('/doReservation', function(req, res, next) {
       //res.json(reservations);      
       //reservations[0].username)
         //res.json(reservations); res.json(reservations.length);
-       //res.send(reservations[0].username);
+       res.send(reservations[0].username);
        if(reservations.length==0){
           addToDB(req,res);
           //res.json({ available: true, message: 'Lab is available' });
@@ -106,7 +106,7 @@ router.get('/checkAvailable/:lab/:date/:stime/:etime',function(req,res,next){
       //res.json(reservations);      
       //reservations[0].username)
         //res.json(reservations); res.json(reservations.length);
-       //res.send(reservations[0].username);
+       res.send(reservations[0].username);
        if(reservations.length==0){
           res.json({ available: true, message: 'Lab is available' });
        }
@@ -147,7 +147,7 @@ router.get('/getlabrescount/:date',function(req,res,next){
     }
     else {
         res.json(reservations);
-       // res.send(date);
+        //res.send(date);
     }
   });
 

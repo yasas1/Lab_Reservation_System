@@ -52,7 +52,7 @@ export class UserhomeComponent implements OnInit {
 
   ngOnInit() {
     this.getlabAreservations(this.lab);
-    //this.getlabrescount();
+    this.getlabrescount();
     
    
   }
@@ -67,7 +67,7 @@ export class UserhomeComponent implements OnInit {
   countD:number=0;
 
   nores:boolean=false;
- /*
+
   getlabrescount(date=this.date){ // set today date for get todat toISOString()
 
     console.log(this.formatDate(this.today)); //.toISOString()
@@ -129,7 +129,7 @@ export class UserhomeComponent implements OnInit {
     );
     
 
-  } */
+  }
 
   barchar(){
    

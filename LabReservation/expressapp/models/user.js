@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema; 
 var bcrypt = require('bcrypt');  
 
-var validate = require('mongoose-validator'); 
+/*var validate = require('mongoose-validator'); 
 var emailValidator = [
     validate({
         validator: 'matches',
@@ -37,7 +37,7 @@ var passwordValidator = [
         arguments: [8, 35],
         message: 'Password should be between {ARGS[0]} and {ARGS[1]} characters'
     })
-]; 
+]; */
 
 
 var UserSchema = new Schema({

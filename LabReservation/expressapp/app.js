@@ -11,7 +11,7 @@ var reservationsRouter = require('./routes/reservations');
 var cors = require('cors');
 var mongoose = require('mongoose');
 
-//var bodyParser = require('body-parser');
+var bodyParser = require('body-parser');
 
 var app = express();
 
@@ -20,8 +20,8 @@ app.use(cors({
   credentials:true
 }));
 
-//app.use(bodyParser.json()); 
-//app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json()); 
+app.use(bodyParser.urlencoded({ extended: true }));
 
 mongoose.connect('mongodb://localhost:27017/lab', function(err) {
     if (err) {
@@ -32,7 +32,7 @@ mongoose.connect('mongodb://localhost:27017/lab', function(err) {
 });
 
 //passport
-/*
+
 var passport = require('passport');
 var session = require('express-session');
 
@@ -46,7 +46,7 @@ app.use(session({
     httpOnly:false,
     secure:false
   }
-}));*/
+}));
 
 require('./passport-config');
 app.use(passport.initialize());

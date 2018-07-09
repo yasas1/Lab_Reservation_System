@@ -3,10 +3,10 @@ var router = express.Router();
 var User = require('../models/user');
 var passport = require('passport');
 
-/* GET users listing. 
+//GET users listing. 
 router.get('/', function(req, res, next) {
   res.send('respond with a resource');
-});  */
+});  
 
 router.post('/register', function(req, res, next) {
   addToDB(req,res);
@@ -56,7 +56,7 @@ router.get('/checkposition/:username',function(req,res,next){
     }
   });
 });
-
+/*
 router.get('/user',isValidUser,function(req,res,next){
   return res.status(200).json(req.user);
 });
@@ -69,7 +69,7 @@ router.get('/logout',isValidUser,function(req,res,next){
 function isValidUser(req,res,next){
   if(req.isAuthenticated()) next();
   else return res.status(401).json({message: 'Unauthorized Request'});
-}
+}*/
 
 
 module.exports = router;

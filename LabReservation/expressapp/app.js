@@ -32,7 +32,7 @@ mongoose.connect('mongodb://localhost:27017/lab', function(err) {
 });
 
 //passport
-
+/*
 var passport = require('passport');
 var session = require('express-session');
 
@@ -46,7 +46,7 @@ app.use(session({
     httpOnly:false,
     secure:false
   }
-}));
+}));*/
 
 require('./passport-config');
 app.use(passport.initialize());

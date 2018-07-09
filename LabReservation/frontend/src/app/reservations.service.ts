@@ -20,7 +20,7 @@ export class ReservationsService {
     }).pipe(map((res:any)  => res));
   }
 
-  
+  /*
   checkAvailable(lab,date,stime,etime){
 
     return this._http.get('http://127.0.0.1:3000/reservations/checkAvailable/'+lab+'/'+date+'/'+stime+'/'+etime,{
@@ -37,6 +37,6 @@ export class ReservationsService {
       withCredentials:true,
       headers:new HttpHeaders().append('Content-Type','application/json')
     }).pipe(map((res:any)  => res));
-  }
+  }*/
 
 }

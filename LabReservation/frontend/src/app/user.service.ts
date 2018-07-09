@@ -32,7 +32,7 @@ export class UserService {
       headers:new HttpHeaders().append('Content-Type','application/json')
     });
   }
-
+ /*
   checkposition(username){
 
     return this._http.get('http://127.0.0.1:3000/users/checkposition/'+username,{
@@ -49,6 +49,6 @@ export class UserService {
       withCredentials:true,
       headers:new HttpHeaders().append('Content-Type','application/json')
     });
-  }
+  } */
 
 }

@@ -130,7 +130,7 @@ export class UserhomeComponent implements OnInit {
     
 
   }
-/*
+
   barchar(){
    
     new Chart(document.getElementById("bar-chart"), {
@@ -168,7 +168,7 @@ export class UserhomeComponent implements OnInit {
         }
       }
   });
-  }*/
+  }
 
   getlabAreservations(lab=this.lab,date=this.date){
     this._labreservations.viewreservations(lab,date)

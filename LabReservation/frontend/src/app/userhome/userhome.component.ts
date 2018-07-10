@@ -115,9 +115,9 @@ export class UserhomeComponent implements OnInit {
             if(this.count[3] != null){
               this.countD=this.count[3].total;
             }                           
-            //console.log(this.countC);
-            this.barchar();
-            //this.nores=false;
+            console.log(this.countC);
+            //this.barchar();
+            this.nores=false;
           }
           this.countA=0;
           this.countB=0;
@@ -130,7 +130,7 @@ export class UserhomeComponent implements OnInit {
     
 
   }
-
+/*
   barchar(){
    
     new Chart(document.getElementById("bar-chart"), {
@@ -168,7 +168,7 @@ export class UserhomeComponent implements OnInit {
         }
       }
   });
-  }
+  }*/
 
   getlabAreservations(lab=this.lab,date=this.date){
     this._labreservations.viewreservations(lab,date)

@@ -95,7 +95,7 @@ export class SummarydateComponent implements OnInit {
         error=>console.error(error)
     );
 
-    this.getlabrescount();
+    //this.getlabrescount();
 
   }
 
@@ -108,7 +108,7 @@ export class SummarydateComponent implements OnInit {
 
   nores:boolean=false;
   
-
+  /*
   getlabrescount(){
     this.nores=false;
     
@@ -170,7 +170,7 @@ export class SummarydateComponent implements OnInit {
     );
     
 
-  }
+  } */
 
   barchar(){
    

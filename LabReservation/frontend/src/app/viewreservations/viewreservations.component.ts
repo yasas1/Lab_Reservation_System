@@ -34,7 +34,9 @@ export class ViewreservationsComponent implements OnInit {
     
     this._labreservations.viewreservations(lab,date)
       .subscribe(
-        data=>{console.log(data); console.log(this.date);this.reser=data;},
+        data=>{//console.log(data); console.log(this.date);
+          this.reser=data;
+        },
         error=>console.error(error)
     );
 
@@ -57,14 +59,15 @@ export class ViewreservationsComponent implements OnInit {
   msgbox:boolean=false;
 
   checkAvailable(lab=this.clab,date=this.cdate,stime=this.stime,etime=this.etime){
-    console.log(this.stime);
+    /*console.log(this.stime);
     console.log(this.etime);
     console.log(this.cdate);
-    console.log(this.clab);
+    console.log(this.clab);*/
 
     this._labreservations.checkAvailable(lab,date,stime,etime)
       .subscribe(
-        data=>{this.msgbox=true;this.availbelMsg=data;console.log(this.availbelMsg.message);console.log(this.stime);},
+        data=>{this.msgbox=true;this.availbelMsg=data;//console.log(this.availbelMsg.message);console.log(this.stime);
+        },
         error=>console.error(error)
     );
   }

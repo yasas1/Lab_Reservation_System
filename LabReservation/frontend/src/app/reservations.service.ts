@@ -39,4 +39,14 @@ export class ReservationsService {
     }).pipe(map((res:any)  => res));
   }
 
+  resyour(username,date){
+
+    return this._http.get('http://127.0.0.1:3000/reservations/resyour/'+username+'/'+date,{
+      
+      observe:'body',
+      withCredentials:true,
+      headers:new HttpHeaders().append('Content-Type','application/json')
+    }).pipe(map((res:any)  => res));
+  }
+
 }

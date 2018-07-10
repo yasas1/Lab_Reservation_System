@@ -9,6 +9,7 @@ import { PublicHomeComponent } from './public-home/public-home.component';
 import { ViewreservationsComponent } from './viewreservations/viewreservations.component';
 import { ReportComponent } from './report/report.component';
 import { SummarydateComponent } from './summarydate/summarydate.component';
+import { ResyourComponent } from './resyour/resyour.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'publichome',pathMatch:'full'},
@@ -20,7 +21,8 @@ const routes: Routes = [
   {path:'viewreservation', component:ViewreservationsComponent},
   {path:'doReservation', component:DoReservationComponent},
   {path:'report', component:ReportComponent},
-  {path:'summary', component:SummarydateComponent}
+  {path:'summary', component:SummarydateComponent},
+  {path:'resyour', component:ResyourComponent}
   
 ];
 

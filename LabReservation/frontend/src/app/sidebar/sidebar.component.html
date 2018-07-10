@@ -14,8 +14,9 @@
 
 <ul>
   <li class="pointer" (click)="moveToHome()"> Home </li>
-  <li class="pointer" (click)="moveToViewReservation()" > Lab Availability </li>
+  <li class="pointer" (click)="moveToViewReservation()" > Check Labs </li>
   <li class="pointer" (click)="moveToNewReservation()" > New Reservation </li>
+  <li class="pointer" (click)="moveToYourReservation()" > Your Reservation </li>
   <li class="pointer" *ngIf="admin" (click)="moveToReport()" > Reservation Report </li>
   <li class="pointer" *ngIf="admin" (click)="moveToSummary()" > Summary By Date </li>
   <li class="pointer" (click)="moveToProfile()" > Profile </li>

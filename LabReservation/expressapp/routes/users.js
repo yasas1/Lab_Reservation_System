@@ -17,8 +17,8 @@ async function addToDB(req,res){
     name:req.body.name,
     username:req.body.username,
     password:User.hashPassword(req.body.passwordFormGroup.password),
-    email:req.body.email,
-    
+    email:req.body.email
+     
   });
   try{
     doc = await user.save();

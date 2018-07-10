@@ -1,0 +1,44 @@
+<app-sidebar></app-sidebar>
+<br>
+<div class="box">
+  <h2 style="text-align: left;">See Your Lab Reservations  </h2>  
+  <p style="text-align:left;font-family:serif; font-size:large; color:darkblue;" > {{username}} </p>    	
+</div>
+<br>
+<div class="container-aboutUs" style="border: 2px solid blue;">
+  <form [formGroup]="viewresForm" >
+    
+    <div>
+        <div> <label class="lb"> Date : </label>  </div>
+        <div>
+            <input formControlName="date" type="date" name="bate" [(ngModel)]="date"><br><br> <br>
+        </div>
+      
+      
+    </div>
+  
+    <div>
+      <button class="btn btn-success" type="submit" (click)="getlabAreservations()" [disabled]="!viewresForm.valid">Submit</button>
+    </div>
+  
+  </form>
+  </div>
+  <br>
+  
+  <div *ngIf="dis" style="height: 400px; overflow: auto;  ">
+      
+  <table class="table table-hover" >
+    <tr style="background-color: darkgray;">
+        <td ><strong>Lab</strong></td>
+        <td><strong>Start Time</strong></td>
+        <td><strong>End Time</strong></td>                
+    </tr>
+    
+    <tr *ngFor="let r of res" >
+      <td>{{r.lab}}</td>
+      <td>{{r.stime}}</td>
+      <td>{{r.etime}}</td>
+    </tr>
+  </table>
+  </div>
+  <br>

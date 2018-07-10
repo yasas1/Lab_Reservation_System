@@ -16,6 +16,7 @@ export class DoReservationComponent implements OnInit {
 
   msg:string="";
   msgstate:boolean=false;
+  today=new Date();
 
  
 

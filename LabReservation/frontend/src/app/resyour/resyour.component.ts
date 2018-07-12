@@ -38,10 +38,12 @@ export class ResyourComponent implements OnInit {
   date:Date;
   res:Labreservation[];
   dis:boolean;
+  disp:boolean;
 
   getlabAreservations(){
 
     this.dis=false;
+    this.disp=false;
     
     
     this._labreservations.resyour(this.username,this.date)
@@ -49,6 +51,8 @@ export class ResyourComponent implements OnInit {
         data=>{this.res=data;
           if(this.res.length>0){
             this.dis=true;
+          }else{
+            this.disp=true;
           }
         },//console.log(this.resA)
         error=>console.error(error)

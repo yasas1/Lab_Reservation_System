@@ -174,7 +174,7 @@ export class SummarydateComponent implements OnInit {
 
   barchar(){
    
-    new Chart(document.getElementById("bar-chart"), {
+    /*new Chart(document.getElementById("bar-chart"), {
       type: 'bar',
       data: {
         
@@ -205,10 +205,54 @@ export class SummarydateComponent implements OnInit {
               labelString: "Reservation Count",
               fontColor: "red"
             }
+          }],
+          xAxes: [{
+            barPercentage: 0.5,
+            gridLines: {
+              //display: false,
+              zeroLineColor: "black",
+              zeroLineWidth: 2
+            }
           }]
+          
         }
       }
-  });
+  });  */
+  
+  new Chart(document.getElementById("bar-chart"), {
+    type: 'horizontalBar',
+    data: {
+      labels: ["Lab A", "Lab B", "Lab C", "Lab D"],
+      datasets: [
+        {
+          label: "Reserve",
+          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#c45850"],
+          data: [this.countA,this.countB,this.countC,this.countD]
+        }
+      ]
+    },
+    options: {
+      legend: { display: false },
+      title: {
+        display: true,
+        text: 'Lab Reservations'
+      },
+      scales:{
+        xAxes:[{
+          ticks:{
+            beginAtZero:true,
+            stepSize: 1
+          },
+          scaleLabel: {
+            display: true,
+            labelString: "Reservation Count",
+            fontColor: "black"
+          }
+        }],
+      }
+    }
+});
+
   }
 
 }

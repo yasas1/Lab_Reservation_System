@@ -1,7 +1,7 @@
 body{
     background-image: url(/assets/images/enterr.jpg);
     background-repeat: no-repeat;
-    background-size: 100% 700px
+    background-size: auto
 }
 .simple-form{
     text-align:center;
@@ -54,7 +54,7 @@ body{
 }
 .error {
     font-family: sans-serif;
-    color: yellow;
+    color: red;
     font-size: 16px;
     
     

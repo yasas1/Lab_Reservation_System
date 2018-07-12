@@ -130,7 +130,7 @@ router.get('/checkAvailable/:lab/:date/:stime/:etime',function(req,res,next){
   });
 
 }); //{ $sort : { lab : 1 } }
-/*
+
 router.get('/getlabrescount/:date',function(req,res,next){
   var dd = new Date(req.params.date);
   console.log(dd);
@@ -158,7 +158,7 @@ router.get('/resyour/:username/:date',function(req,res,next){
     }
   });
 
-}); */
+});
 
 
 module.exports = router;

@@ -40,17 +40,43 @@ export class ResyourComponent implements OnInit {
   dis:boolean;
   disp:boolean;
 
-  getlabAreservations(){
+  OverlapMsg:string;
 
+  getlabAreservations(){
     this.dis=false;
     this.disp=false;
-    
-    
+     
     this._labreservations.resyour(this.username,this.date)
       .subscribe(
         data=>{this.res=data;
           if(this.res.length>0){
             this.dis=true;
+            //console.log(this.res[1].lab);
+            var i:number;
+            var stime=this.res[0].stime;
+            var etime=this.res[0].etime;
+            for(i=1; i<this.res.length ;i++) {
+              //console.log(this.res[num].lab);
+
+              if(this.res[i].stime == stime){
+                //return res.json({ available: false, message: 'Lab is not available' });
+                console.log("Reservations are Overlapping 1 Lab "+this.res[0].lab+" "+stime+"-"+etime+ " and "+ this.res[i].lab+" "+this.res[i].stime+"-"+this.res[i].etime);
+              }
+              //db st 8-10 and req st 9
+              else if(this.res[i].stime < stime && this.res[i].etime > stime){
+                //return res.json({ available: false, message: 'Lab is not available' });
+                console.log("Reservations are Overlapping 2 Lab "+this.res[0].lab+" "+stime+"-"+etime+ " and "+ this.res[i].lab+" "+this.res[i].stime+"-"+this.res[i].etime);
+              }//db st 8-10 and req st 7-9 or 7-11
+              else if(this.res[i].stime > stime && this.res[i].stime < etime){
+                //return res.json({ available: false, message: 'Lab is not available' });
+                console.log("Reservations are Overlapping 3 Lab "+this.res[0].lab+" "+stime+"-"+etime+ " and "+ this.res[i].lab+" "+this.res[i].stime+"-"+this.res[i].etime);
+              }
+              else{
+                //return res.json({ available: true, message: 'Lab is available' });
+                console.log("Reservations are not Overlapping");
+              }
+            }
+                       
           }else{
             this.disp=true;
           }

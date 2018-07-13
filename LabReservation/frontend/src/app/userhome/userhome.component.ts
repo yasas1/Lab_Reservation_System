@@ -14,7 +14,7 @@ import * as Chart from 'chart.js';
 })
 export class UserhomeComponent implements OnInit {
 
-  username:string='';
+  username:string;
 
   today=new Date();            // today date
   /*formatDate(date:Date){
@@ -38,8 +38,8 @@ export class UserhomeComponent implements OnInit {
     .subscribe(
       data=>this.addName(data),
       error=>this._router.navigate(['/login'])
-    );
-    
+    );   
+      
   }
 
   viewresForm:FormGroup = new FormGroup({  
@@ -50,11 +50,9 @@ export class UserhomeComponent implements OnInit {
     this.username = data.username;
   }
 
-  ngOnInit() {
+  ngOnInit() { 
     this.getlabAreservations(this.lab);
-    this.getlabrescount();
-    
-   
+    this.getlabrescount(); 
   }
 
   date:Date =new Date("2018-06-18");

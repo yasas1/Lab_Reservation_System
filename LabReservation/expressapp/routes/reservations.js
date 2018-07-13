@@ -103,11 +103,9 @@ router.get('/checkAvailable/:lab/:date/:stime/:etime',function(req,res,next){
        if(reservations.length==0){
           res.json({ available: true, message: 'Lab is available' });
        }
-       else{
-          
+       else{         
           for(i in reservations){
             //res.send(val.stime); console.log(reservations[i].stime);
-         
              //db st 8 and req st 8
             if(reservations[i].stime == stime){
               return res.json({ available: false, message: 'Lab is not available' });

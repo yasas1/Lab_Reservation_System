@@ -52,17 +52,17 @@ export class ViewreservationsComponent implements OnInit {
   });
 
   clab:string="A";
-  cdate:Date=new Date("2018-06-18");
+  cdate:Date;//=new Date("2018-06-18");
   stime:Time;
   etime:Time;
   availbelMsg:any={};
   msgbox:boolean=false;
 
   checkAvailable(lab=this.clab,date=this.cdate,stime=this.stime,etime=this.etime){
-    console.log(this.stime);
+    /*console.log(this.stime);
     console.log(this.etime);
     console.log(this.cdate);
-    console.log(this.clab);
+    console.log(this.clab);*/
 
     this._labreservations.checkAvailable(lab,date,stime,etime)
       .subscribe(

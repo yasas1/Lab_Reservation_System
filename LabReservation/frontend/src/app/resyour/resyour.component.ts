@@ -40,7 +40,8 @@ export class ResyourComponent implements OnInit {
   dis:boolean;
   disp:boolean;
 
-  OverlapMsg:string;
+  OverlapMsg:string[]=["Overlaping Reservations"];
+  overlap:boolean=false;
 
   getlabAreservations(){
     this.dis=false;
@@ -51,31 +52,47 @@ export class ResyourComponent implements OnInit {
         data=>{this.res=data;
           if(this.res.length>0){
             this.dis=true;
-           console.log(this.res[1].lab);
+            //console.log(this.res[1].lab);
+            this.overlap=false;
             var i:number;
-            var stime=this.res[0].stime;
-            var etime=this.res[0].etime;
-            for(i=1; i<this.res.length ;i++) {
-              console.log(this.res[i].lab);
-
-              if(this.res[i].stime == stime){
-                //return res.json({ available: false, message: 'Lab is not available' });
-                console.log("Reservations are Overlapping 1 Lab ");
+            var j:number;
+            var stime;
+            var etime;
+            
+            for(j=0; j<this.res.length ;j++) {
+              //console.log(this.res[num].lab);
+              stime=this.res[j].stime;
+              etime=this.res[j].etime;
+              for(i=j+1; i<this.res.length ;i++){
+                  if(this.res[i].stime == stime){
+                    //return res.json({ available: false, message: 'Lab is not available' });
+                    this.overlap=true;
+                    //console.log("Reservations are Overlapping 1 Lab "+this.res[j].lab+" "+stime+"-"+etime+ " and "+ this.res[i].lab+" "+this.res[i].stime+"-"+this.res[i].etime);
+                    this.OverlapMsg.push(" Lab "+this.res[j].lab+" "+stime+"-"+etime+ " and "+ this.res[i].lab+" "+this.res[i].stime+"-"+this.res[i].etime ); //[i-1]
+                  }
+                  //db st 8-10 and req st 9
+                  else if(this.res[i].stime < stime && this.res[i].etime > stime){
+                    //return res.json({ available: false, message: 'Lab is not available' });
+                    this.overlap=true;
+                    console.log("Reservations are Overlapping 2 Lab "+this.res[j].lab+" "+stime+"-"+etime+ " and "+ this.res[i].lab+" "+this.res[i].stime+"-"+this.res[i].etime);
+                    this.OverlapMsg.push(" Lab "+this.res[j].lab+" "+stime+"-"+etime+ " and "+ this.res[i].lab+" "+this.res[i].stime+"-"+this.res[i].etime );
+                  }//db st 8-10 and req st 7-9 or 7-11
+                  else if(this.res[i].stime > stime && this.res[i].stime < etime){
+                    //return res.json({ available: false, message: 'Lab is not available' });
+                    this.overlap=true;
+                    console.log("Reservations are Overlapping 3 Lab "+this.res[j].lab+" "+stime+"-"+etime+ " and "+ this.res[i].lab+" "+this.res[i].stime+"-"+this.res[i].etime);
+                    //this.OverlapMsg[i-1]="Reservations are Overlapping Lab ";
+                    this.OverlapMsg.push(" Lab "+this.res[j].lab+" "+stime+"-"+etime+ " and "+ this.res[i].lab+" "+this.res[i].stime+"-"+this.res[i].etime );
+                  }
+                  else{
+                    //return res.json({ available: true, message: 'Lab is available' });
+                    this.overlap=false;
+                    //console.log("Reservations are not Overlapping");
+                  }
               }
-              //db st 8-10 and req st 9
-              else if(this.res[i].stime < stime && this.res[i].etime > stime){
-                //return res.json({ available: false, message: 'Lab is not available' });
-                console.log("Reservations are Overlapping 2 Lab ");
-              }//db st 8-10 and req st 7-9 or 7-11
-              else if(this.res[i].stime > stime && this.res[i].stime < etime){
-                //return res.json({ available: false, message: 'Lab is not available' });
-                console.log("Reservations are Overlapping 3 Lab ");
-              }
-              else{
-                //return res.json({ available: true, message: 'Lab is available' });
-                console.log("Reservations are not Overlapping");
-              }
+              
             }
+            console.log(this.OverlapMsg);
                        
           }else{
             this.disp=true;

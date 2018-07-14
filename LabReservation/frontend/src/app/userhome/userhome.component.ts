@@ -17,13 +17,13 @@ export class UserhomeComponent implements OnInit {
   username:string;
 
   today=new Date();            // today date
-  formatDate(date:Date){
+  /*formatDate(date:Date){
     const day =  date.getDate().toString;
     const month =  (date.getMonth() +1).toString;
     const year =  date.getFullYear().toString;
 
     return year+"-"+month+"-"+day;
-  }
+  }*/
   
   labA:boolean=false;
 
@@ -68,19 +68,18 @@ export class UserhomeComponent implements OnInit {
 
   getlabrescount(date=this.date){ // set today date for get todat toISOString()
 
-    console.log(this.today.toISOString());
+    console.log(this.today); //.toISOString()
 
     this._labreservations.countlab(date)
       .subscribe(
-        data=>{this.count=data; 
-          console.log(this.count[0]);
+        data=>{this.count=data; //console.log(this.count[0]);
           if(this.count==null){
             this.nores=true;
-            return;           
+            //return;           
           }
           else if(this.count.length==0){
             this.nores=true;
-            return;            
+            //return;            
           }
           else{
             if(this.count[0] != null){
@@ -114,9 +113,9 @@ export class UserhomeComponent implements OnInit {
             if(this.count[3] != null){
               this.countD=this.count[3].total;
             }                           
-            console.log(this.countC);
+            //console.log(this.countC);
             this.barchar();
-            this.nores=false;
+            //this.nores=false;
           }
           this.countA=0;
           this.countB=0;

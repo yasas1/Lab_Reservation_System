@@ -29,7 +29,7 @@
 body{
     background-image: url(/assets/images/lab4.jpg);
     background-repeat: no-repeat;
-    background-size: 100% 700px
+    background-size: auto
 }
 .simple-form{
     text-align:center;

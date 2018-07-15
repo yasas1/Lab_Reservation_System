@@ -16,6 +16,7 @@ export class DoReservationComponent implements OnInit {
 
   msg:string="";
   msgstate:boolean=false;
+  success:boolean=false;
   today=new Date();
 
  
@@ -51,16 +52,25 @@ export class DoReservationComponent implements OnInit {
     /*if(!this.registrationFormGroup.valid || (this.registrationFormGroup.controls.password.value != this.registrationFormGroup.controls.cpass.value)){
       console.log("Invalid Form"); return;
     }*/
+    this.msgstate=false;
+    this.success=false;
 
     this._reserve.doReservation(JSON.stringify(this.doresForm.value))
     .subscribe(
       data=>{console.log(data);
         this.availbelMsg=data;
         console.log(this.availbelMsg.message);
-        this.msgstate=true;
+        
         if(this.availbelMsg.available==false){
+          this.msgstate=true;
           this.msg="Lab is not Available";
+        }
+        else if(this.availbelMsg.otherlab==true){
+          this.msgstate=true;
+          this.msg=this.availbelMsg.message;
+          console.log(this.msg);
         }else{
+          this.success=true;
           this.msg="Reservation Success";
         }
         

@@ -7,7 +7,12 @@ router.post('/doReservation', function(req, res, next) {
   var stime=req.body.stime;
   var etime=req.body.etime;
 
-  Reservation.find({ lab:req.body.lab, date:req.body.date}).select('username stime etime').exec(function (err, reservations) {
+  var dd = new Date(req.body.date);
+  console.log(dd);
+  console.log(req.body.lab);
+  console.log(req.body.username);// { "$or":[ {lab:req.body.lab},{username:req.body.username} ] }
+
+  Reservation.find({ $and:[ { $or:[ {lab:req.body.lab},{username:req.body.username} ] },  {date:dd}  ] } ).select('username stime etime lab').exec(function (err, reservations) {
     if (err){
         res.send(err);
     }
@@ -26,14 +31,26 @@ router.post('/doReservation', function(req, res, next) {
             console.log(reservations[i].stime);
              //db st 8 and req st 8
             if(reservations[i].stime == stime){
-              return res.json({ available: false, message: 'Lab is not available' });
+              if(reservations[i].username==req.body.username && reservations[i].lab!=req.body.lab){
+                return res.json({ otherlab: true, message: 'Overlap with your another Reservations on Lab '+ reservations[i].lab +' Check Your Reservations' });
+              }else{
+                return res.json({ available: false, message: 'Lab is not available' });
+              }       
             }
             //db st 8-10 and req st 9
             else if(reservations[i].stime < stime && reservations[i].etime > stime){
-              return res.json({ available: false, message: 'Lab is not available' });
+              if(reservations[i].username==req.body.username && reservations[i].lab!=req.body.lab){
+                return res.json({ otherlab: true, message: 'Overlap with your another Reservations on Lab '+ reservations[i].lab +' Check Your Reservations'  });
+              }else{
+                return res.json({ available: false, message: 'Lab is not available' });
+              }
             }//db st 8-10 and req st 7-9 or 7-11
             else if(reservations[i].stime > stime && reservations[i].stime < etime){
-              return res.json({ available: false, message: 'Lab is not available' });
+              if(reservations[i].username==req.body.username && reservations[i].lab!=req.body.lab){
+                return res.json({ otherlab: true, message: 'Overlap with your another Reservations on Lab '+ reservations[i].lab +' Check Your Reservations' });
+              }else{
+                return res.json({ available: false, message: 'Lab is not available' });
+              }
             }
             else{
               addToDB(req,res);

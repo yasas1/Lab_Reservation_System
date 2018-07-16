@@ -3,5 +3,6 @@ export class Labreservation{
     stime:string;
     etime:string;
     lab:string;
-   
+    _id:any;
+    
 }

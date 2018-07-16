@@ -31,13 +31,15 @@
     <tr style="background-color: darkgray;">
         <td ><strong>Lab</strong></td>
         <td><strong>Start Time</strong></td>
-        <td><strong>End Time</strong></td>                
+        <td><strong>End Time</strong></td>   
+        <td *ngIf="delete"><strong>Delete</strong></td>          
     </tr>
     
     <tr *ngFor="let r of res" >
       <td>{{r.lab}}</td>
       <td>{{r.stime}}</td>
       <td>{{r.etime}}</td>
+      <td *ngIf="delete"> <input type="button" (click)="deleteRes(r._id)" value="Delete" class="btn btn-danger"> </td>
     </tr>
   </table>
   </div>

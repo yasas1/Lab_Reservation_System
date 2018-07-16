@@ -17,13 +17,18 @@ export class UserhomeComponent implements OnInit {
   username:string;
 
   today=new Date();            // today date
-  /*formatDate(date:Date){
-    const day =  date.getDate().toString;
-    const month =  (date.getMonth() +1).toString;
-    const year =  date.getFullYear().toString;
+  
+  formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
 
-    return year+"-"+month+"-"+day;
-  }*/
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+
+    return [year, month, day].join('-');
+  }
   
   labA:boolean=false;
 
@@ -66,11 +71,11 @@ export class UserhomeComponent implements OnInit {
 
   nores:boolean=false;
 
-  getlabrescount(date=this.date){ // set today date for get todat toISOString()
+  getlabrescount(){ // set today date for get todat toISOString()
 
-    console.log(this.today); //.toISOString()
+    console.log(this.formatDate(this.today)); //.toISOString()
 
-    this._labreservations.countlab(date)
+    this._labreservations.countlab(this.formatDate(this.today))
       .subscribe(
         data=>{this.count=data; //console.log(this.count[0]);
           if(this.count==null){
@@ -168,8 +173,8 @@ export class UserhomeComponent implements OnInit {
   });
   }
 
-  getlabAreservations(lab=this.lab,date=this.date){
-    this._labreservations.viewreservations(lab,date)
+  getlabAreservations(lab=this.lab){
+    this._labreservations.viewreservations(lab,this.formatDate(this.today))
       .subscribe(
         data=>{this.reser=data;},
         error=>console.error(error)

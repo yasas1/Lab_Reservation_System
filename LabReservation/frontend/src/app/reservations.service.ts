@@ -49,4 +49,14 @@ export class ReservationsService {
     }).pipe(map((res:any)  => res));
   }
 
+  deleteRes(id){
+
+    return this._http.delete('http://127.0.0.1:3000/reservations/deleteres/'+id,{
+      
+      observe:'body',
+      withCredentials:true,
+      headers:new HttpHeaders().append('Content-Type','application/json')
+    }).pipe(map((res:any)  => res));
+  }
+
 }

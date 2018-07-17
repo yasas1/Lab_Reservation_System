@@ -74,8 +74,8 @@ export class ResyourComponent implements OnInit {
     var dd = new Date(this.date);
     console.log(dd.getMonth());
 
-    if(dd.getMonth() >= this.today.getMonth()){
-      console.log("Fuck");
+    if(dd.getMonth() >= this.today.getMonth() && dd.getDate() > this.today.getDate()){
+      //console.log("check");
       this.delete=true;
     }
      

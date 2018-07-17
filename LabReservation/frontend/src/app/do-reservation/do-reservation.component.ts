@@ -19,7 +19,7 @@ export class DoReservationComponent implements OnInit {
   success:boolean=false;
   today=new Date();
 
- 
+  date:Date;
 
   doresForm:FormGroup = new FormGroup({
     username: new FormControl(null,Validators.required),
@@ -43,6 +43,17 @@ export class DoReservationComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  dateChange(){
+
+    var dd = new Date(this.date);
+    console.log(dd.getMonth());
+
+    if(dd.getMonth() <= this.today.getMonth() && dd.getDate() < this.today.getDate()){
+      console.log("check");
+      
+    }
   }
 
   availbelMsg:any={};

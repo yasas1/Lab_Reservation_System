@@ -26,7 +26,7 @@
     <br><br>
       
         <label class="lb"> Date:</label>
-        <input formControlName="date" type="date" name="date" min="[{today | date:'yyyy-mm-dd'}]"><br><br> <br>
+        <input formControlName="date" type="date" name="date" [(ngModel)]="date" (change)="dateChange()"><br><br> <br>
       <div>
         <label class="lb">Time :</label>
         <input formControlName="stime"  type="time" name="stime" min="06:00:00" max="18:00:00" required> <label class="lb" > To </label>

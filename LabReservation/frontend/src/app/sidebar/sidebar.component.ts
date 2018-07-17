@@ -41,7 +41,8 @@ export class SidebarComponent implements OnInit {
     
     this._user.checkposition(this.username)
       .subscribe(
-        data=>{this.position=data;//console.log(this.position[0].position);
+        data=>{this.position=data;
+          console.log(this.position[0].position);
           if(this.position[0].position == "admin"){
             this.admin=true;
           }
@@ -54,7 +55,7 @@ export class SidebarComponent implements OnInit {
   logout(){
     this._user.logout()
     .subscribe(
-      data=>{//console.log(data);
+      data=>{console.log(data);
         this._router.navigate(['/login'])
     },
       error=>console.log(error)

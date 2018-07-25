@@ -90,8 +90,6 @@ body{
 
 .error {
     font-family: sans-serif;
-    color: yellow;
-    font-size: 16px;
-    
-    
+    color: red;
+    font-size: 16px;  
 }

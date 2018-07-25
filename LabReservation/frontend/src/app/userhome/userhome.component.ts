@@ -56,7 +56,7 @@ export class UserhomeComponent implements OnInit {
   }
 
   ngOnInit() { 
-    //this.getlabAreservations(this.lab);
+    this.getlabAreservations(this.lab);
     this.getlabrescount(); 
   }
 
@@ -172,7 +172,7 @@ export class UserhomeComponent implements OnInit {
       }
   });
   }
-  /*
+
   getlabAreservations(lab=this.lab){
     this._labreservations.viewreservations(lab,this.formatDate(this.today))
       .subscribe(
@@ -180,7 +180,7 @@ export class UserhomeComponent implements OnInit {
         error=>console.error(error)
     );
 
-  }*/
+  }
 
   showLabA(){
     this.labA=true;

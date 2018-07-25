@@ -26,15 +26,18 @@
     <br><br>
       
         <label class="lb"> Date:</label>
-        <input formControlName="date" type="date" name="date" [(ngModel)]="date" (change)="dateChange()"><br><br> <br>
-      <div>
+        <input formControlName="date" type="date" name="date" [(ngModel)]="date" (change)="dateChange()"><br><br>
+        <p class="error" *ngIf="datemsg"><strong>Date should be greater than or equal to current date</strong></p>
+        
+      <div> 
         <label class="lb">Time :</label>
-        <input formControlName="stime"  type="time" name="stime" min="06:00:00" max="18:00:00" required> <label class="lb" > To </label>
-        <input formControlName="etime" type="time" name="etime"  min="06:00:00" max="18:00:00" required>
+        <input formControlName="stime"  type="time" name="stime" [(ngModel)]="start" min="06:00:00" max="18:00:00" required> <label class="lb" > To </label>
+        <input formControlName="etime" type="time" name="etime" [(ngModel)]="end"  min="06:00:00" max="18:00:00" required>
       </div>
        <br> <br>
       
         <button class="button2" type="submit" (click)="doreservation()" [disabled]="!doresForm.valid">Submit</button>
+        <button class="button2" type="submit" (click)="changeStartTime()">check</button>
 
         <div class="row show-hide-message">
             <div *ngIf="msgstate" class="alert alert-danger">

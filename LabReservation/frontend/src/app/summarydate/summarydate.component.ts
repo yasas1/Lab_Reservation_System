@@ -174,7 +174,7 @@ export class SummarydateComponent implements OnInit {
 
   barchar(){
    
-    new Chart(document.getElementById("bar-chart"), {
+    /*new Chart(document.getElementById("bar-chart"), {
       type: 'bar',
       data: {
         
@@ -217,8 +217,8 @@ export class SummarydateComponent implements OnInit {
           
         }
       }
-  });  
-  /*
+  });  */
+  
   new Chart(document.getElementById("bar-chart"), {
     type: 'horizontalBar',
     data: {
@@ -251,7 +251,7 @@ export class SummarydateComponent implements OnInit {
         }],
       }
     }
-}); */
+});
 
   }
 

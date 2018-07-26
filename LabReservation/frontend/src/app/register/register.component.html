@@ -20,7 +20,7 @@
     <p class="error" *ngIf="registrationFormGroup.controls.username.errors?.required && registrationFormGroup.controls.username.touched">Username is required</p>
     <div [formGroup]="passwordFormGroup">
       <label class="lb" > Password :</label><br>
-      <input class="btnii" #password1 formControlName="password"   type="password" name="password" placeholder="password" ><br>
+      <input class="btnii" minlength="8" #password1 formControlName="password"   type="password" name="password" placeholder="password" ><br>
       <p class="error" *ngIf="passwordFormGroup.controls.password.errors?.required && passwordFormGroup.controls.password.touched">Password is required</p>
 
       <label class="lb" > Confirm Password :</label><br>
